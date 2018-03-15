@@ -1,0 +1,29 @@
+= Quick OSGI tutorial
+
+This project houses code acompaning a short OSGi training / workshop / tutorial. To be used as quick introduction to main OSGi abstractions and usage.
+
+== How to use it
+
+This is to be used as supporting materials during a quick workshop. The idea is that participant checks out a initial version (marked with tag 'initial') and then follows the steps outlined by the trainer.
+
+Other tags can be used in case of problems to bring the project to a know good state at any step of the training.
+
+== Tags descriptions
+
+The tags and the coresponding state of the application:
+
+* `S1 initial` -- the initial NON osgi two module maven project.
+** Look around the project
+** Build with `mvn clean install`
+** Run. Go to `name-client` directory and execute `mvn -q exec-exec`
+** Change maven `pom.xml` files to build jars instead of bundles.
+*** Change packaging
+*** Uncomment Felix maven-bundle-plugin
+*** Add bundle activator for name-client
+*** Configure bundle properties
+** Download http://felix.apache.org/downloads.cgi[Apache Felix OSGi framework] and unpack resulting in new `felix-framework-VERSION` directory
+** Build the bundles, and copy to `felix-framework-VERSION/bundle` directory
+** Run Felix. Go to `felix-framework-VERSION` directory, run `java -jar bin/felix.jar`.
+** Observe... fix bugs, repeat
+
+* TODO
