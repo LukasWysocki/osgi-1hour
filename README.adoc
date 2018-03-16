@@ -31,5 +31,19 @@ Goal at this step is to OSGi-fy the project. We want two bundles, client dependi
 
 * `S2 Vanilla OSGi` -- Just OSGi core based bundles, one depending on another, static.
 
-Goal at this step is to replace the static "package" dependance of client on provider and replace it with dynamic dependency on a service exposed from provider.
+Goal at this step is to replace the static "package" dependence of client on provider and replace it with dynamic dependency on a service exposed from provider.
 
+* Register a NameProvider service in a new Bundle Activator in `name-provider`
+* Use that service in `name-client`
+* Remember about adjusting bundle definitions in `pom.xml` files
+* redeploy in Felix... fix bugs, repeat
+* try stopping the `name-provider`... `name-client` works -- good or bad?
+
+* `S3 a service, still static` -- We have a `NameProvider` service and we are using it, but we are not aware of it's state changes (we could use a broken service).
+
+Goal of this step is to react dynamically to the service being stopped.
+
+* When `name-client` is stopped, make the Nameprovider throw an exception to simulate closed resources.
+* Observe the `NameProvider` service availability changes in `name-client`.
+* redeploy in Felix... fix bugs, repeat
+* try stopping the `name-provider`... observe `name-client`

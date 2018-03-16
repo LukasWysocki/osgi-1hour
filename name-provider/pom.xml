@@ -15,6 +15,13 @@
 
   <name>name-provider</name>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+    </dependency>
+  </dependencies>
+
   <build>
     <plugins>
       <!-- (2) START -->
@@ -24,7 +31,8 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Export-Package>de.logopak.nameprovider,de.logopak.nameprovider.internal</Export-Package>
+            <Export-Package>de.logopak.nameprovider</Export-Package>
+            <Bundle-Activator>de.logopak.nameprovider.internal.NameProviderActivator</Bundle-Activator>
           </instructions>
         </configuration>
       </plugin>

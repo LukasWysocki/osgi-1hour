@@ -42,7 +42,6 @@
           <instructions>
             <Import-Package>
               de.logopak.nameprovider,
-              de.logopak.nameprovider.internal,
               org.osgi.framework;version="[1.8,1.9)"
             </Import-Package>
             <Bundle-Activator>de.logopak.nameclient.NameClientActivator</Bundle-Activator>

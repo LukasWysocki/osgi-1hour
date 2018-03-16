@@ -1,11 +1,14 @@
 package de.logopak.nameclient;
 
 import de.logopak.nameprovider.NameProvider;
-import de.logopak.nameprovider.internal.DefaultNameProvider;
 
 public class NameClient {
 
-  private NameProvider nameProvider = new DefaultNameProvider();
+  private final NameProvider nameProvider;
+
+  public NameClient(NameProvider nameProvider) {
+    this.nameProvider = nameProvider;
+  }
 
   public void displayWelcomeMessage(Outputter outputter) {
     String message = String
