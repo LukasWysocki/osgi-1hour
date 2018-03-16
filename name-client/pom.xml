@@ -11,8 +11,7 @@
   </parent>
 
   <artifactId>name-client</artifactId>
-  <packaging>jar</packaging>
-  <!--packaging>bundle</packaging--> <!-- (1) -->
+  <packaging>bundle</packaging> <!-- (1) -->
 
   <name>name-client</name>
 
@@ -23,24 +22,33 @@
       <version>${name-provider.version}</version>
       <scope>compile</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+    </dependency>
+
   </dependencies>
 
 
   <build>
     <plugins>
       <!-- (2) START -->
-      <!--plugin>
+      <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Export-Package>TODO</Export-Package>
-            <Private-Package>TODO</Private-Package>
-            <Bundle-Activator>TODO</Bundle-Activator>
+            <Import-Package>
+              de.logopak.nameprovider,
+              de.logopak.nameprovider.internal,
+              org.osgi.framework;version="[1.8,1.9)"
+            </Import-Package>
+            <Bundle-Activator>de.logopak.nameclient.NameClientActivator</Bundle-Activator>
           </instructions>
         </configuration>
-      </plugin-->
+      </plugin>
       <!-- (2) END -->
 
       <!-- just to easly invoke the name-client with mvn -q exec:exec -->

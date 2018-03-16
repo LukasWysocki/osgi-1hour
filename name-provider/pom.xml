@@ -11,24 +11,25 @@
   </parent>
 
   <artifactId>name-provider</artifactId>
-  <packaging>jar</packaging>
-  <!--packaging>bundle</packaging--> <!-- (1) -->
+  <packaging>bundle</packaging> <!-- (1) -->
 
   <name>name-provider</name>
 
-  <!-- (2) START -->
-  <!--plugin>
-    <groupId>org.apache.felix</groupId>
-    <artifactId>maven-bundle-plugin</artifactId>
-    <extensions>true</extensions>
-    <configuration>
-      <instructions>
-        <Export-Package>TODO</Export-Package>
-        <Private-Package>TODO</Private-Package>
-        <Bundle-Activator>TODO</Bundle-Activator>
-      </instructions>
-    </configuration>
-  </plugin-->
-  <!-- (2) END -->
+  <build>
+    <plugins>
+      <!-- (2) START -->
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Export-Package>de.logopak.nameprovider,de.logopak.nameprovider.internal</Export-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+      <!-- (2) END -->
+    </plugins>
+  </build>
 
 </project>

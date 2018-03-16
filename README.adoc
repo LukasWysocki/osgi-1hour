@@ -13,6 +13,9 @@ Other tags can be used in case of problems to bring the project to a know good s
 The tags and the coresponding state of the application:
 
 * `S1 initial` -- the initial NON osgi two module maven project.
+
+Goal at this step is to OSGi-fy the project. We want two bundles, client depending on provider. We want to "start' the client bundle for it to print a welcome message every few seconds.
+
 ** Look around the project
 ** Build with `mvn clean install`
 ** Run. Go to `name-client` directory and execute `mvn -q exec-exec`
@@ -26,4 +29,7 @@ The tags and the coresponding state of the application:
 ** Run Felix. Go to `felix-framework-VERSION` directory, run `java -jar bin/felix.jar`.
 ** Observe... fix bugs, repeat
 
-* TODO
+* `S2 Vanilla OSGi` -- Just OSGi core based bundles, one depending on another, static.
+
+Goal at this step is to replace the static "package" dependance of client on provider and replace it with dynamic dependency on a service exposed from provider.
+
