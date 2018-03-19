@@ -22,4 +22,8 @@ public class DefaultNameProvider implements NameProvider {
   public String provideName() {
     return names.get(random.nextInt(names.size()));
   }
+
+  public void stop() {
+    names = null;
+  }
 }

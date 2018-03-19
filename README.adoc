@@ -10,9 +10,17 @@ Other tags can be used in case of problems to bring the project to a know good s
 
 == Tags descriptions
 
-The tags and the coresponding state of the application:
+The tags and the corresponding state of the application. Start with checking out the first tag:
 
-* `S1 initial` -- the initial NON osgi two module maven project.
+* `git clone git@github.com:LukasWysocki/osgi-1hour.git`
+* `git checkout S1`
+
+after that we will code together.
+
+If you ever "get lost" on the journey we will checkout one of the other tags to get back on track.
+
+=== S1 initial
+The initial NON osgi two module maven project.
 
 Goal at this step is to OSGi-fy the project. We want two bundles, client depending on provider. We want to "start' the client bundle for it to print a welcome message every few seconds.
 
@@ -29,7 +37,9 @@ Goal at this step is to OSGi-fy the project. We want two bundles, client dependi
 ** Run Felix. Go to `felix-framework-VERSION` directory, run `java -jar bin/felix.jar`.
 ** Observe... fix bugs, repeat
 
-* `S2 Vanilla OSGi` -- Just OSGi core based bundles, one depending on another, static.
+=== S2 Vanilla OSGi
+
+Just OSGi core based bundles, one depending on another, static.
 
 Goal at this step is to replace the static "package" dependence of client on provider and replace it with dynamic dependency on a service exposed from provider.
 
@@ -39,7 +49,8 @@ Goal at this step is to replace the static "package" dependence of client on pro
 * redeploy in Felix... fix bugs, repeat
 * try stopping the `name-provider`... `name-client` works -- good or bad?
 
-* `S3 a service, still static` -- We have a `NameProvider` service and we are using it, but we are not aware of it's state changes (we could use a broken service).
+=== S3 a service, still static
+We have a `NameProvider` service and we are using it, but we are not aware of it's state changes (we could use a broken service).
 
 Goal of this step is to react dynamically to the service being stopped.
 
@@ -47,3 +58,10 @@ Goal of this step is to react dynamically to the service being stopped.
 * Observe the `NameProvider` service availability changes in `name-client`.
 * redeploy in Felix... fix bugs, repeat
 * try stopping the `name-provider`... observe `name-client`
+
+=== S4 a service, with dynamic client
+Now our `NameClient` is dynamically reacting to the registration and de-registration of `Nameprovider` service.
+
+Goal of this step is to get rid of entire code that is acting as plumbing. Construction of objects, listening for availability of `NameProvider` service. We want to be left just with out buisness logic.
+
+To do that we will use blueprint. We wil use it for dependancy injection including injetion of `NameProvider` service.

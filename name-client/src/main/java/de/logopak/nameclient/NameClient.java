@@ -11,8 +11,13 @@ public class NameClient {
   }
 
   public void displayWelcomeMessage(Outputter outputter) {
-    String message = String
-        .format("“That there’s some good in this world, Mr. %s… and it’s worth fighting for.”", nameProvider.provideName());
+    String message = null;
+    try {
+      message = String
+          .format("“That there’s some good in this world, Mr. %s… and it’s worth fighting for.”", nameProvider.provideName());
+    } catch (Throwable t) {
+      message = String.format("Exception invoking NameProvider: " + t.getMessage());
+    }
     outputter.output(message);
   }
 

@@ -8,14 +8,17 @@ import org.osgi.framework.ServiceRegistration;
 public class NameProviderActivator implements BundleActivator {
 
   private ServiceRegistration<NameProvider> serviceRegistration;
+  private DefaultNameProvider service;
 
   @Override
   public void start(BundleContext context) {
-    serviceRegistration = context.registerService(NameProvider.class, new DefaultNameProvider(), null);
+    service = new DefaultNameProvider();
+    serviceRegistration = context.registerService(NameProvider.class, service, null);
   }
 
   @Override
   public void stop(BundleContext context) {
     serviceRegistration.unregister();
+    service.stop();
   }
 }
