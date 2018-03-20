@@ -28,6 +28,11 @@
       <artifactId>org.osgi.core</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.aries.blueprint</groupId>
+      <artifactId>org.apache.aries.blueprint.api</artifactId>
+    </dependency>
+
   </dependencies>
 
 
@@ -45,7 +50,6 @@
               org.osgi.framework;version="[1.8,1.9)",
               org.osgi.util.tracker;version="[1.5,1.6)"
             </Import-Package>
-            <Bundle-Activator>de.logopak.nameclient.NameClientActivator</Bundle-Activator>
           </instructions>
         </configuration>
       </plugin>

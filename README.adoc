@@ -33,7 +33,10 @@ Goal at this step is to OSGi-fy the project. We want two bundles, client dependi
 *** Add bundle activator for name-client
 *** Configure bundle properties
 ** Download http://felix.apache.org/downloads.cgi[Apache Felix OSGi framework] and unpack resulting in new `felix-framework-VERSION` directory
-** Build the bundles, and copy to `felix-framework-VERSION/bundle` directory
+** Build the bundles, use the felix CLI commands:
+*** `install ../PATH_TO_BUNDLE/bundle_name.jar`
+*** `start BUNDLE_NUMBER`
+*** Commands that will be also useful are: `stop`, `bundles`, `bundle`, `uninstall`.
 ** Run Felix. Go to `felix-framework-VERSION` directory, run `java -jar bin/felix.jar`.
 ** Observe... fix bugs, repeat
 
@@ -54,7 +57,7 @@ We have a `NameProvider` service and we are using it, but we are not aware of it
 
 Goal of this step is to react dynamically to the service being stopped.
 
-* When `name-client` is stopped, make the Nameprovider throw an exception to simulate closed resources.
+* When `name-provider` bundle is stopped, make the DefaultNameProvider throw an exception to simulate closed resources.
 * Observe the `NameProvider` service availability changes in `name-client`.
 * redeploy in Felix... fix bugs, repeat
 * try stopping the `name-provider`... observe `name-client`
@@ -65,3 +68,6 @@ Now our `NameClient` is dynamically reacting to the registration and de-registra
 Goal of this step is to get rid of entire code that is acting as plumbing. Construction of objects, listening for availability of `NameProvider` service. We want to be left just with out buisness logic.
 
 To do that we will use blueprint. We wil use it for dependancy injection including injetion of `NameProvider` service.
+
+=== S5 service, and dependencies managed by blueprint
+We have the services and dependencies dynamically managed by bluprint. We have no dependencies on OSGi in our code.
