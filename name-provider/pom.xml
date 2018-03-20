@@ -20,6 +20,10 @@
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.core</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.apache.aries.blueprint</groupId>
+      <artifactId>org.apache.aries.blueprint.api</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
@@ -32,7 +36,6 @@
         <configuration>
           <instructions>
             <Export-Package>de.logopak.nameprovider</Export-Package>
-            <Bundle-Activator>de.logopak.nameprovider.internal.NameProviderActivator</Bundle-Activator>
           </instructions>
         </configuration>
       </plugin>

@@ -65,3 +65,6 @@ Now our `NameClient` is dynamically reacting to the registration and de-registra
 Goal of this step is to get rid of entire code that is acting as plumbing. Construction of objects, listening for availability of `NameProvider` service. We want to be left just with out buisness logic.
 
 To do that we will use blueprint. We wil use it for dependancy injection including injetion of `NameProvider` service.
+
+=== S5 service, and dependencies managed by blueprint
+We have the services and dependencies dynamically managed by bluprint. We have no dependencies on OSGi in our code.
